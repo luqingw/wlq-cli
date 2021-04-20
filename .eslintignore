@@ -1,0 +1,7 @@
+build/*.js
+src/assets
+public
+dist
+tests
+src/assets/icon/iconfont.js
+mock

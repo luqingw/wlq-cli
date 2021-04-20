@@ -1,0 +1,24 @@
+/*
+ * @Description: babelrc
+ * @Date: 2021-04-20 18:01:16
+ * @LastEditors: luqing
+ * @LastEditTime: 2021-04-20 18:01:51
+ */
+
+{
+    "plugins": [
+      "syntax-dynamic-import"
+    ],
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          },
+          "modules": false
+        }
+      ]
+    ]
+  }
+  

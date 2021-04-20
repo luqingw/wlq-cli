@@ -1,0 +1,22 @@
+/*
+ * @Description: 模块编译
+ * @Date: 2021-04-20 15:53:08
+ * @LastEditors: luqing
+ * @LastEditTime: 2021-04-20 15:56:58
+ */
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

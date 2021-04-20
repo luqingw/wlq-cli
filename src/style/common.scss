@@ -1,0 +1,51 @@
+@import './variables.scss';
+$directions:("t":"top", "b":"bottom", "l":"left", "r":"right");
+$gaps:("p":"padding", "m":"margin");
+//获取padding margin间隔
+@each $gap in $gaps {
+    @each $dir in $directions {
+        @for $i from 1 through 6 {
+            $size: $i*5;
+            .#{nth($gap,1)}-#{nth($dir,1)}-#{$size} {
+                #{nth($gap,2)}-#{nth($dir,2)}: #{$size}px;
+            }
+        }
+    }
+}
+%debugger {
+  border: 1px solid #f0f;
+}
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+%flexStart {
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
+}
+%ellipsisSingle{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+%ellipsisDouble{
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+}
+%ellipsisS{
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+}
+%shadow{
+  box-shadow: 0 2px 8px 0 rgba(235, 235, 235, 1);
+}
