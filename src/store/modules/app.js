@@ -8,7 +8,7 @@ import Cookies from 'js-cookie'
 
 const state = {
   device: 'desktop',
-//   qiankun: window.__POWERED_BY_QIANKUN__,
+  //   qiankun: window.__POWERED_BY_QIANKUN__,
   size: Cookies.get('size') || 'medium'
 }
 

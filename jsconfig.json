@@ -5,17 +5,17 @@
  * @LastEditTime: 2021-04-20 15:56:58
  */
 {
-  "compilerOptions": {
-    "target": "ES6",
-    "module": "commonjs",
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    }
-  },
+  // "compilerOptions": {
+  //   "target": "ES6",
+  //   "module": "commonjs",
+  //   "allowSyntheticDefaultImports": true,
+  //   "baseUrl": "./",
+  //   "paths": {
+  //     "@/*": [
+  //       "src/*"
+  //     ]
+  //   }
+  // },
   "exclude": [
     "node_modules"
   ]

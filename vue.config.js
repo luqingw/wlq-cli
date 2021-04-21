@@ -2,7 +2,7 @@
  * @Description: vue config
  * @Date: 2021-04-20 15:50:57
  * @LastEditors: luqing
- * @LastEditTime: 2021-04-20 17:12:33
+ * @LastEditTime: 2021-04-21 17:10:12
  */
 'use strict'
 
@@ -139,15 +139,15 @@ module.exports = {
       .end()
 
     // set preserveWhitespace
-    config.module
-      .rule('vue')
-      .use('vue-loader')
-      .loader('vue-loader')
-      .tap((options) => {
-        options.compilerOptions.preserveWhitespace = true
-        return options
-      })
-      .end()
+    // config.module
+    //   .rule('vue')
+    //   .use('vue-loader')
+    //   .loader('vue-loader')
+    //   .tap((options) => {
+    //     options.compilerOptions.preserveWhitespace = true
+    //     return options
+    //   })
+    //   .end()
 
     config
     // https://webpack.js.org/configuration/devtool/#development

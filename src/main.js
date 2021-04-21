@@ -2,7 +2,7 @@
  * @Description: main entry
  * @Date: 2021-04-20 14:20:44
  * @LastEditors: luqing
- * @LastEditTime: 2021-04-20 17:47:42
+ * @LastEditTime: 2021-04-21 18:13:37
  */
 
 import Vue from 'vue'
@@ -14,11 +14,11 @@ import '@/styles/style.scss' // 单独引入
 import App from './App'
 import store from './store'
 import router from './router'
-import formConfig from '@/config/config'
 
+Vue.use(router)
 Vue.use(Plugins)
 
-import '@/assets/svg-icons/index' // icon
+// import '@/assets/svg-icons/index' // icon
 import './permission' // permission control
 import './utils/error-log' // error log
 import '@/styles/index.scss' // global css
@@ -36,11 +36,11 @@ Vue.prototype.$echartsResize = function(ref) {
   })
 }
 
-import * as filters from './filters' // global filters
+// import * as filters from './filters' // global filters
 
 import { _typeof } from './utils'
 
-import checkModulePermission from './utils/check-module-permission'
+// import checkModulePermission from './utils/check-module-permission'
 
 /**
  * If you don't want to use mock-server
@@ -50,25 +50,23 @@ import checkModulePermission from './utils/check-module-permission'
  * Currently MockJs will be used in the production environment,
  * please remove it before going online! ! !
  */
-import { mockXHR } from '../mock'
+import { mockXHR } from './mock'
 if (process.env.NODE_ENV === 'production') {
   mockXHR()
 }
-
-Vue.use(formConfig)
 
 // 全局类型判断
 Vue.prototype._typeof = _typeof
 
 Vue.prototype.qiankun = window.__POWERED_BY_QIANKUN__
 // register global utility filters
-Object.keys(filters).forEach((key) => {
-  Vue.filter(key, filters[key])
-})
+// Object.keys(filters).forEach((key) => {
+//   Vue.filter(key, filters[key])
+// })
 
 Vue.config.productionTip = false
 
-Vue.use(checkModulePermission)
+// Vue.use(checkModulePermission)
 Vue.prototype.instance = instance
 // new Vue({
 //   router: router,

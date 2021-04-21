@@ -2,23 +2,23 @@
  * @Description: app entry
  * @Date: 2021-04-20 14:20:44
  * @LastEditors: luqing
- * @LastEditTime: 2021-04-20 17:03:37
+ * @LastEditTime: 2021-04-21 19:39:14
 -->
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+    <transition name="fade-transform" mode="out-in">
+      <router-view />
+    </transition>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
-  name: "App",
-  components: {
-    HelloWorld,
-  },
-};
+  name: 'App',
+  components: {}
+}
 </script>
 
 <style>
@@ -28,6 +28,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  border: 1px solid #f00;
 }
 </style>
