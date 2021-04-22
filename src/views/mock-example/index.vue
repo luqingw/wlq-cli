@@ -1,9 +1,9 @@
 <!--
- * @Description: mock-example
+ * @Description: mock example
  * @LastEditors: luqing
  * @Author: luqing
  * @Date: 2021-04-22 09:56:55
- * @LastEditTime: 2021-04-22 09:59:45
+ * @LastEditTime: 2021-04-22 15:15:25
 -->
 <template>
   <div class="app-container">
@@ -16,7 +16,7 @@
 
       <el-table-column width="180px" align="center" label="Date">
         <template slot-scope="scope">
-          <span>{{ scope.row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+          <span>{{ scope.row.timestamp }}</span>
         </template>
       </el-table-column>
 
@@ -28,7 +28,7 @@
 
       <el-table-column width="100px" label="Importance">
         <template slot-scope="scope">
-          <svg-icon v-for="n in +scope.row.importance" :key="n" icon-class="star" class="meta-item__icon" />
+          <svg-icon v-for="n in +scope.row.importance" :key="n" icon-class="star" class="icon" />
         </template>
       </el-table-column>
 
@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import { fetchList } from '@/api/mock-api'
+import { fetchList } from '@/api/mock-example'
 import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
 
 export default {
@@ -87,7 +87,7 @@ export default {
       listLoading: true,
       listQuery: {
         page: 1,
-        limit: 20
+        limit: 10
       }
     }
   },
@@ -98,8 +98,8 @@ export default {
     getList() {
       this.listLoading = true
       fetchList(this.listQuery).then((response) => {
-        this.list = response.data.items
-        this.total = response.data.total
+        this.list = response.data.data.items
+        this.total = response.data.data.total
         this.listLoading = false
       })
     }

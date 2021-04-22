@@ -2,7 +2,7 @@
  * @Description:router entry
  * @Date: 2021-04-20 16:26:53
  * @LastEditors: luqing
- * @LastEditTime: 2021-04-22 10:43:09
+ * @LastEditTime: 2021-04-22 15:03:46
  */
 import Vue from 'vue'
 import Router from 'vue-router'

@@ -62,14 +62,14 @@ router.beforeEach(async(to, from, next) => {
   if (token !== 'undefined' || token === 'null' || token == null) {
     const routes = store.getters.permission_routes
     if (routes.length) {
-        NProgress.done()
-        return
+      NProgress.done()
+      return
     } else {
       await store.dispatch('permission/generateRoutes', constantRoutes)
     }
     next()
-      NProgress.done()
-      return
+    NProgress.done()
+    return
   } else {
     next('/login')
   }

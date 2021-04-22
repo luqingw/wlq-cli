@@ -3,14 +3,15 @@
  * @LastEditors: luqing
  * @Author: luqing
  * @Date: 2021-04-22 09:53:33
- * @LastEditTime: 2021-04-22 10:37:58
+ * @LastEditTime: 2021-04-22 15:08:06
  */
 
 import request from '@/utils/request'
+const api = '/tw-template'
 
 export function fetchList(params) {
   return request({
-    url: '/mock/mock-example',
+    url: `${api}/article/list`,
     method: 'get',
     params
   })

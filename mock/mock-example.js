@@ -3,7 +3,7 @@
  * @LastEditors: luqing
  * @Author: luqing
  * @Date: 2021-04-21 17:30:00
- * @LastEditTime: 2021-04-21 17:32:13
+ * @LastEditTime: 2021-04-22 15:10:56
  */
 
 import Mock from 'mockjs'
@@ -34,13 +34,13 @@ for (let i = 0; i < count; i++) {
     platforms: ['a-platform']
   }))
 }
-
+const api = '/tw-template'
 export default [
   {
-    url: '/vue-element-admin/article/list',
+    url: `${api}/article/list`,
     type: 'get',
     response: config => {
-      const { importance, type, title, page = 1, limit = 20, sort } = config.query
+      const { importance, type, title, page = 1, limit = 10, sort } = config.query
 
       let mockList = List.filter(item => {
         if (importance && item.importance !== +importance) return false
@@ -56,7 +56,7 @@ export default [
       const pageList = mockList.filter((item, index) => index < limit * page && index >= limit * (page - 1))
 
       return {
-        code: 20000,
+        code: 200,
         data: {
           total: mockList.length,
           items: pageList
@@ -66,14 +66,14 @@ export default [
   },
 
   {
-    url: '/vue-element-admin/article/detail',
+    url: `${api}/article/detail`,
     type: 'get',
     response: config => {
       const { id } = config.query
       for (const article of List) {
         if (article.id === +id) {
           return {
-            code: 20000,
+            code: 200,
             data: article
           }
         }
@@ -82,11 +82,11 @@ export default [
   },
 
   {
-    url: '/vue-element-admin/article/pv',
+    url: `${api}/article/pv`,
     type: 'get',
     response: _ => {
       return {
-        code: 20000,
+        code: 200,
         data: {
           pvData: [
             { key: 'PC', pv: 1024 },
@@ -100,22 +100,22 @@ export default [
   },
 
   {
-    url: '/vue-element-admin/article/create',
+    url: `${api}/article/create`,
     type: 'post',
     response: _ => {
       return {
-        code: 20000,
+        code: 200,
         data: 'success'
       }
     }
   },
 
   {
-    url: '/vue-element-admin/article/update',
+    url: `${api}/article/update`,
     type: 'post',
     response: _ => {
       return {
-        code: 20000,
+        code: 200,
         data: 'success'
       }
     }
