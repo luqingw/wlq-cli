@@ -2,7 +2,7 @@
  * @Description: cz-config
  * @Date: 2021-04-20 18:04:26
  * @LastEditors: luqing
- * @LastEditTime: 2021-04-20 18:23:41
+ * @LastEditTime: 2021-04-22 16:01:40
  */
 
 'use strict'
@@ -62,8 +62,6 @@ messages: {
     body:
       '（非必填）提供更详细的变更描述. 使用 "|" 断行:\n',
     breaking: '（非必填）列出所有的不兼容变更:\n',
-    footer:
-      '输入这次涉及的jira号 例如.: #OPENAPI-946, #OPENAPI-947:\n',
     confirmCommit: '你确认要提交么？',
   },
   allowCustomScopes: true,

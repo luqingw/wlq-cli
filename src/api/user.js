@@ -5,7 +5,7 @@
  * @Date: 2021-04-22 10:40:50
  * @LastEditTime: 2021-04-22 14:13:53
  */
-const api = '/tw-template/'
+const api = '/lq-template/'
 import request from '@/utils/request'
 
 export function Login(data) {

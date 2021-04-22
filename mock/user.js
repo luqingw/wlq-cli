@@ -29,7 +29,7 @@ const users = {
     name: 'Normal Editor'
   }
 }
-const api = '/tw-template'
+const api = '/lq-template'
 export default [
   // user login
   {

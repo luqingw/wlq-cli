@@ -1,9 +1,9 @@
 {
-  "name": "tw-template",
-  "version": "0.1.0",
+  "name": "wlq-cli",
+  "version": "1.0.0",
   "description": "base template",
   "author": "luqing",
-  "private": true,
+  "private": false,
   "bin": {
     "test": "bin/test.js"
   },
@@ -133,7 +133,7 @@
     "node": ">=8.9",
     "npm": ">= 3.0.0"
   },
-  "homepage": "https://gitlab.daocloud.cn/openapi/openapi-tenant-frontend/#readme",
+  "homepage": "https://github.com/luqingw/wlq-cli/#readme",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",

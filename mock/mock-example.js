@@ -34,7 +34,7 @@ for (let i = 0; i < count; i++) {
     platforms: ['a-platform']
   }))
 }
-const api = '/tw-template'
+const api = '/lq-template'
 export default [
   {
     url: `${api}/article/list`,

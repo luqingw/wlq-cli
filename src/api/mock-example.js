@@ -7,7 +7,7 @@
  */
 
 import request from '@/utils/request'
-const api = '/tw-template'
+const api = '/lq-template'
 
 export function fetchList(params) {
   return request({
