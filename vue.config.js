@@ -2,7 +2,7 @@
  * @Description: vue config
  * @Date: 2021-04-20 15:50:57
  * @LastEditors: luqing
- * @LastEditTime: 2021-04-21 17:10:12
+ * @LastEditTime: 2021-04-22 14:28:43
  */
 'use strict'
 
@@ -62,12 +62,11 @@ module.exports = {
         changeOrigin: true
       },
       '/api': {
-        // target: 'http://10.31.11.1:30801',
-        target: 'http://10.6.101.200:30801',
+        target: 'http://localhost/',
         changeOrigin: true
       }
     },
-    // after: require('./mock/mock-server.js'),
+    after: require('./mock/mock-server.js'),
     historyApiFallback: true
   },
   configureWebpack: {

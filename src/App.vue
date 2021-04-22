@@ -2,7 +2,7 @@
  * @Description: app entry
  * @Date: 2021-04-20 14:20:44
  * @LastEditors: luqing
- * @LastEditTime: 2021-04-21 19:39:14
+ * @LastEditTime: 2021-04-22 09:44:02
 -->
 <template>
   <div id="app">
@@ -28,6 +28,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  border: 1px solid #f00;
 }
 </style>

@@ -2,7 +2,7 @@
  * @Description: parent router modules
  * @Date: 2021-04-20 16:32:32
  * @LastEditors: luqing
- * @LastEditTime: 2021-04-21 20:00:31
+ * @LastEditTime: 2021-04-22 09:36:15
  */
 
 // import Layout from '@/layout'
@@ -11,8 +11,10 @@ const parent = {
   path: '/parent',
   // component: Layout,
   hidden: false,
+  component: { render: e => e('router-view') },
+
   meta: {
-    title: '目录菜单',
+    title: 'parent menu',
     icon: 'menu icon'
   },
   children: [

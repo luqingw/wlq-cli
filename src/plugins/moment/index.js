@@ -8,13 +8,13 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import relativeTime from 'dayjs/plugin/relativeTime'
 
-// import { LANG, i18n } from '../vue-i18n' 暂时不支持国际化
+// import { LANG, i18n } from '../vue-i18n'
 
 dayjs.extend(relativeTime)
 // if (i18n.locale === LANG.ZH) {
 //   dayjs.locale('zh-cn')
 // }
-dayjs.locale('zh-cn')
+// dayjs.locale('zh-cn')
 export default function install(Vue) {
   Vue.prototype.$moment = dayjs
 }

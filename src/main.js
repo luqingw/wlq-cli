@@ -2,23 +2,36 @@
  * @Description: main entry
  * @Date: 2021-04-20 14:20:44
  * @LastEditors: luqing
- * @LastEditTime: 2021-04-21 18:13:37
+ * @LastEditTime: 2021-04-22 14:39:59
  */
 
 import Vue from 'vue'
+
+import Cookies from 'js-cookie'
+
 import 'normalize.css/normalize.css' // a modern alternative to CSS resets
 
-import Plugins, { i18n } from '@/plugins'
+import Element from 'element-ui'
+import './styles/element-variables.scss'
+
+import Plugins from '@/plugins'
 import './public-path'
+
 import '@/styles/style.scss' // 单独引入
+
 import App from './App'
 import store from './store'
 import router from './router'
+
+Vue.use(Element, {
+  size: Cookies.get('size') || 'medium' // set element-ui default size
+})
 
 Vue.use(router)
 Vue.use(Plugins)
 
 // import '@/assets/svg-icons/index' // icon
+import './icons' // icon
 import './permission' // permission control
 import './utils/error-log' // error log
 import '@/styles/index.scss' // global css
@@ -50,7 +63,7 @@ import { _typeof } from './utils'
  * Currently MockJs will be used in the production environment,
  * please remove it before going online! ! !
  */
-import { mockXHR } from './mock'
+import { mockXHR } from '../mock'
 if (process.env.NODE_ENV === 'production') {
   mockXHR()
 }
@@ -87,7 +100,6 @@ export async function mount(props) {
   routerA = router
   instance = new Vue({
     router: routerA,
-    i18n,
     store,
     render: h => h(App)
   }).$mount('#app')

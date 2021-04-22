@@ -3,15 +3,15 @@
  * @LastEditors: luqing
  * @Author: luqing
  * @Date: 2021-04-21 17:30:00
- * @LastEditTime: 2021-04-21 17:33:32
+ * @LastEditTime: 2021-04-22 14:37:53
  */
 
 import Mock from 'mockjs'
-import { param2Obj } from '@/utils'
+import { param2Obj } from '../src/utils'
 
 import user from './user'
 import role from './role'
-import article from './article'
+import mockExample from './mock-example'
 import search from './remote-search'
 import audit from './audit-log'
 
@@ -19,7 +19,7 @@ import audit from './audit-log'
 const mocks = [
   ...user,
   ...role,
-  ...article,
+  ...mockExample,
   ...search,
   ...audit
 ]

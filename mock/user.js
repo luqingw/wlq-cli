@@ -3,16 +3,17 @@
  * @LastEditors: luqing
  * @Author: luqing
  * @Date: 2021-04-21 17:30:00
- * @LastEditTime: 2021-04-21 17:30:41
+ * @LastEditTime: 2021-04-22 14:32:05
  */
-const tokens = {
-  admin: {
-    token: 'admin'
-  },
-  editor: {
-    token: 'editor-token'
-  }
-}
+// const tokens = {
+//   admin: {
+//     token: 'admin'
+//   },
+//   editor: {
+//     token: 'editor-token'
+//   }
+// }
+// import Mock from 'mockjs'
 
 const users = {
   'admin': {
@@ -28,15 +29,17 @@ const users = {
     name: 'Normal Editor'
   }
 }
-
+const api = '/tw-template/'
 export default [
   // user login
   {
-    url: '/vue-element-admin/user/login',
+    url: `${api}user/login`,
     type: 'post',
     response: (config) => {
-      const { username } = config.body
-      const token = tokens[username]
+      console.log('config', config)
+      // const { username } = config.body
+      // const token = tokens[username]
+      const token = 'twdt-admin'
 
       // mock error
       if (!token) {
@@ -47,7 +50,7 @@ export default [
       }
 
       return {
-        code: 20000,
+        code: 200,
         data: token
       }
     }
@@ -55,7 +58,7 @@ export default [
 
   // get user info
   {
-    url: '/vue-element-admin/user/info\.*',
+    url: `${api}user/info\.*`,
     type: 'get',
     response: (config) => {
       const { token } = config.query
@@ -78,7 +81,7 @@ export default [
 
   // user logout
   {
-    url: '/vue-element-admin/user/logout',
+    url: `${api}user/logout`,
     type: 'post',
     response: _ => ({
       code: 20000,

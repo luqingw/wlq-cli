@@ -2,7 +2,7 @@
  * @Description: 请求封装
  * @Date: 2021-04-20 16:44:48
  * @LastEditors: luqing
- * @LastEditTime: 2021-04-20 17:17:02
+ * @LastEditTime: 2021-04-22 13:19:20
  */
 import axios from 'axios'
 import {
@@ -10,13 +10,13 @@ import {
   Message
 } from 'element-ui'
 import NProgress from 'nprogress' // progress bar
-import { _localStorage } from '@/plugins/storage'
-import router from '@/router/index'
+// import { _localStorage } from '@/plugins/storage'
 import store from '@/store'
-import _ from 'lodash'
-import { i18n } from '../plugins/vue-i18n'
 
-let code431 = 0
+import { getToken } from '@/utils/auth'
+// import _ from 'lodash'
+
+// const code431 = 0
 // 重试上限次数
 axios.defaults.retry = 1
 axios.defaults.retryDelay = 1000
@@ -31,8 +31,14 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   (config) => {
-    if (_localStorage.token) {
-      config.headers['token'] = _localStorage.token
+    // if (_localStorage.token) {
+    //   config.headers['token'] = _localStorage.token
+    // }
+    if (store.getters.token) {
+      // let each request carry token
+      // ['X-Token'] is a custom headers key
+      // please modify it according to the actual situation
+      config.headers['X-Token'] = getToken()
     }
     return config
   },
@@ -52,15 +58,15 @@ service.interceptors.response.use(
     const data = response
     const code = response.status
     const message = response.message || ''
-    const headers = response.headers
+    // const headers = response.headers
     if (code !== 200 && code > 400 && code !== 402) {
       responseCode(data, code, message)
       return Promise.reject(new Error(message || 'Error'))
     } else if (response.headers['content-type'] === 'application/octet-stream') {
 
       // 文件流处理
-     
-    }  else {
+
+    } else {
       return data
     }
   },
@@ -70,17 +76,17 @@ service.interceptors.response.use(
     const config = error.config
     if (error.code === 'ECONNABORTED') {
       // 如果config不存在或未设置重试选项，请拒绝
-      if (!config || !config.retry) return Promise.reject(i18n.t('common.timeOutLog'))
+      if (!config || !config.retry) return Promise.reject()
       // 设置变量跟踪重试次数
       config.__retryCount = config.__retryCount || 0
       // 检查是否已经达到最大重试总次数
       if (config.__retryCount >= config.retry) {
         // 抛出错误信息
-        // Message({
-        //   message: i18n.t('common.timeOutLog'),
-        //   type: 'error',
-        //   duration: 3 * 1000
-        // })
+        Message({
+          message,
+          type: 'error',
+          duration: 3 * 1000
+        })
         return Promise.reject('超时')
       }
       // 增加请求重试次数
@@ -107,11 +113,12 @@ service.interceptors.response.use(
 export default service
 
 function responseCode(data, code, message, config) {
+  console.log('request data code', data, code)
   // 登录失效
   if (code === 401) {
-    MessageBox.confirm(i18n.t('logout'), {
-      confirmButtonText: i18n.t('common.confirm'),
-      cancelButtonText: i18n.t('common.cancel'),
+    MessageBox.confirm('登录失效', {
+      confirmButtonText: 'confirm button',
+      cancelButtonText: 'cancal button',
       type: 'warning',
       center: true
     }).then(() => {
@@ -123,16 +130,6 @@ function responseCode(data, code, message, config) {
       }, 3000)
       NProgress.done()
     })
-  } else if (code === 510 || code === 511) {
-    // 创建服务失败, 需要在指定接口catch中做相应排除处理，否则出现重复的err message
-    if (config.isNewServeApi) {
-      Message({
-        // message: '服务创建成功,但配置出错，请到服务配置中重新配置!',
-        message: i18n.t('serve.setting.serverError'),
-        type: 'error',
-        duration: 5 * 1000
-      })
-    }
   } else if (code === 409) {
     Message({
       message: message || 'Error',
@@ -141,9 +138,9 @@ function responseCode(data, code, message, config) {
     })
   } else if (code === 403) {
     // 拒绝访问
-    MessageBox.confirm(i18n.t('forbidden'), {
-      confirmButtonText: i18n.t('common.confirm'),
-      cancelButtonText: i18n.t('common.cancel'),
+    MessageBox.confirm('forbidden', {
+      confirmButtonText: 'confirm button',
+      cancelButtonText: 'cancal button',
       cancelButtonClass: 'is-plain',
       type: 'warning',
       center: true
@@ -156,24 +153,10 @@ function responseCode(data, code, message, config) {
       // })
       // window.location.reload()
     })
-  } else if (code === 431) {
-    if (code431 === 0) {
-      // 拒绝访问
-      MessageBox.confirm(i18n.t('common.noActivation'), {
-        confirmButtonText: i18n.t('common.confirm'),
-        cancelButtonClass: 'is-plain',
-        type: 'warning',
-        showClose: false,
-        showCancelButton: false,
-        center: true
-      }).then(() => {
-        code431 = 1
-      })
-    }
   } else if (code === 400) {
     // 请求配置中显示错误提示
     Message({
-      message: i18n.t('common.badRequest') || message,
+      message,
       type: 'error',
       duration: 5 * 1000
     })
@@ -198,9 +181,9 @@ function responseCode(data, code, message, config) {
       })
     }
   }
-  // return Promise.reject(new Error(message || 'Error'))
+  return Promise.reject(new Error(message || 'Error'))
 }
 
-export default function service(config) {
-  return reqo(config)
-}
+// export default function service(config) {
+//   return reqo(config)
+// }

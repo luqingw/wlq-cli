@@ -2,7 +2,7 @@
  * @Description: storage
  * @Date: 2021-04-20 16:19:18
  * @LastEditors: luqing
- * @LastEditTime: 2021-04-20 16:23:21
+ * @LastEditTime: 2021-04-22 11:31:08
  */
 /**
  * PREFIX 填写应用前缀
@@ -17,7 +17,7 @@ function formatKey(key) {
   * AUTH
   */
 
-const TOKEN = PREFIX + formatKey('token')
+const TOKEN = formatKey('token')
 
 export const _localStorage = {
   //  token

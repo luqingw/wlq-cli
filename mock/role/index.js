@@ -3,10 +3,10 @@
  * @LastEditors: luqing
  * @Author: luqing
  * @Date: 2021-04-21 17:30:14
- * @LastEditTime: 2021-04-21 17:33:48
+ * @LastEditTime: 2021-04-22 14:39:08
  */
 import Mock from 'mockjs'
-import { deepClone } from '@/utils/index.js'
+import { deepClone } from '../../src/utils'
 import { asyncRoutes, constantRoutes } from './routes.js'
 
 const routes = deepClone([...constantRoutes, ...asyncRoutes])
